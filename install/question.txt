@@ -1,0 +1,49 @@
+Question 1 of 2
+2:51:58
+DESC
+RULES
+README
+SETTINGS
+Codewriting
+
+You are developing an IDE libraries installer.
+
+On the preview page you can see the following elements:
+
+The left rectangle box containing the list of libraries available for installation;
+The right rectangle box containing the list of libraries which were selected to be installed;
+Two arrow buttons for moving libraries between two boxes described above;
+An Install button simulating the installation of the libraries by clearing the right box.
+Your task is to implement the functionality as shown on the screen record:
+
+
+Note: If you are not able to see the video, use this link to access it.
+
+Acceptance Criteria
+Scenario: Selecting library
+  Given Either left box or right box is not empty 
+   When Any library from any of these boxes is clicked upon
+   Then "libs-installer__item--selected" CSS class is added to the selected "div" tag
+    And "libs-installer__item--selected" CSS class is removed from other libraries in both boxes
+Scenario: Moving library between boxes
+  Given One of the libraries is selected 
+   When The arrow button pointing towards the opposite box is clicked
+   Then The library is moved to the opposite box
+    And Libraries in both boxes are sorted by their id's in ascending order
+    And None of the libraries are marked as selected
+Scenario: Moving library in the wrong direction
+  Given One of the libraries is selected 
+   When The arrow button pointing away from the opposite box is clicked
+   Then Both boxes stay as is
+    And None of the libraries are marked as selected
+Scenario: Clicking "Install" button
+  Given The right box is not empty 
+   When The "Install" button is clicked
+   Then Right box becomes empty
+    And Left box stays as is 
+    And None of the libraries are marked as selected 
+Notes
+The template already contains the code that renders the installer. Your task is to provide the implementations for the selectLibrary, onMoveLeftClick, onMoveRightClick and installLibraries button click handler functions.
+You can expand the test results to see a more detailed report.
+Please use the provided template, as the tests access the elements by using the CSS selectors. If you change the structure of the DOM elements, the tests will fail.
+[execution time limit] 10 seconds
